@@ -4,7 +4,7 @@ Basic Perl template for cli
 What is it?
 -----------
 
-bpt_cli.pl is a template for a script that needs to parse it's own command line options. 
+A basic template for Perl applications that take and parse command line options. Based on the ideas from Perl Best Practices and the GNU style long options reference. It uses only Standard Modules to maintain portability.
 
 The code was formatted with 'perltidy --perl-best-practices' to keep it readable and then run through various levels of perlcritic to see where possible problems are located. The --brutal option checks for everything but I like having the output broken down by theme. I use this script: < https://gist.github.com/1033008 > to save on typing.
 
@@ -22,6 +22,8 @@ Missing "CONFIGURATION" section in POD at line 42, column 1.  See pages 133,138 
 * Notes about PBP used:
 
 I think many of the guidelines written by Damian Conway really foster good communication via the code. Here is a break down of the PBP guidelines followed and my synopsis of what they mean in brackets [].
+
+ 2.*  Code Layout [ perltidy --perl-best-practices ]
 
  4.13 Barewords [ use strict; ]
  
@@ -66,3 +68,4 @@ perlcritic command-line interface - http://search.cpan.org/dist/Perl-Critic/bin/
 
 Perl Best Practices - http://www.amazon.com/Perl-Best-Practices-Damian-Conway/dp/0596001738/ref=sr_1_1?s=books&ie=UTF8&qid=1308463834&sr=1-1
 
+Perl Bundled Modules - http://perldoc.perl.org/perlmodlib.html#Standard-Modules

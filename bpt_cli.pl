@@ -2,10 +2,10 @@
 
 #-----------------------------------------------------------------------------#
 # Copyright (c) 2011 Kirk Kimmel. All rights reserved.
-# This program is free software; you can redistribute it and/or modify it 
+# This program is free software; you can redistribute it and/or modify it
 # under the 3-clause BSD license. See LICENSE.txt.
 #
-# The newest version of this file can be found at: 
+# The newest version of this file can be found at:
 #   https://github.com/kimmel/basic-perl-template-for-cli
 #-----------------------------------------------------------------------------#
 
