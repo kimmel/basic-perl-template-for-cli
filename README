@@ -1,0 +1,68 @@
+Basic Perl template for cli
+
+-----------
+What is it?
+-----------
+
+bpt_cli.pl is a template for a script that needs to parse it's own command line options. 
+
+The code was formatted with 'perltidy --perl-best-practices' to keep it readable and then run through various levels of perlcritic to see where possible problems are located. The --brutal option checks for everything but I like having the output broken down by theme. I use this script: < https://gist.github.com/1033008 > to save on typing.
+
+I fixed as many of the listed problems as I thought necessary and the perlcritic output for --brutal now reads:
+
+RCS keywords $Id$ not found at line 1, column 1.  See page 441 of PBP.  (Severity: 2)
+RCS keywords $Revision$, $HeadURL$, $Date$ not found at line 1, column 1.  See page 441 of PBP.  (Severity: 2)
+RCS keywords $Revision$, $Source$, $Date$ not found at line 1, column 1.  See page 441 of PBP.  (Severity: 2)
+No package-scoped "$VERSION" variable found at line 1, column 1.  See page 404 of PBP.  (Severity: 2)
+Return value of flagged function ignored - print at line 32, column 24.  See pages 208,278 of PBP.  (Severity: 1)
+Missing "EXIT STATUS" section in POD at line 42, column 1.  See pages 133,138 of PBP.  (Severity: 2)
+Missing "CONFIGURATION" section in POD at line 42, column 1.  See pages 133,138 of PBP.  (Severity: 2)
+
+
+* Notes about PBP used:
+
+I think many of the guidelines written by Damian Conway really foster good communication via the code. Here is a break down of the PBP guidelines followed and my synopsis of what they mean in brackets [].
+
+ 4.13 Barewords [ use strict; ]
+ 
+ 5.5  Punctuation Variables [ use English; ]
+ 5.7  Match Variables [ use English qw( -no_match_vars ); ]
+ 
+ 7.2  Boilerplates [ documentation template for applications ]
+ 7.4  Location [ the user docs are in the source file ]
+ 7.5  Contiguity [ put all POD in one location in the source file ]
+ 7.6  Position [ put all POD at the end of the file ]
+ 
+14.3  Meta-options [ application command line flags ]
+14.5  Command-Line Processing [ use Getopt::Long qw( GetOptions ); ]
+
+------------
+Downloading:
+------------
+
+The most recent version can be downloaded from https://github.com/kimmel/basic-perl-template-for-cli .
+
+--------------
+Bug Reporting:
+--------------
+
+Please check the Issue queue < https://github.com/kimmel/basic-perl-template-for-cli/issues > and file a report if one is not already present.
+
+----------
+Licensing:
+----------
+
+This program is free software; you can redistribute it and/or modify it under the 3-clause BSD license. See LICENSE.txt file.
+
+----------------
+References used:
+----------------
+
+GNU Table of Long Options - http://www.gnu.org/prep/standards/html_node/Option-Table.html
+
+perltidy - http://perltidy.sourceforge.net/
+
+perlcritic command-line interface - http://search.cpan.org/dist/Perl-Critic/bin/perlcritic
+
+Perl Best Practices - http://www.amazon.com/Perl-Best-Practices-Damian-Conway/dp/0596001738/ref=sr_1_1?s=books&ie=UTF8&qid=1308463834&sr=1-1
+
