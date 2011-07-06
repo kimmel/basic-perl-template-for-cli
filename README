@@ -1,10 +1,33 @@
-Basic Perl template for cli
+Basic Perl template(s) for cli
+==============================
 
------------
-What is it?
------------
+Table of contents
+-----------------
+
+1. Introduction
+1.1. Design Methodology
+1.2. PBP
+2. Requirements
+3. Reporting bugs
+4. Licensing
+5. References used
+
+
+
+1. Introduction 
+---------------
 
 A basic template for Perl applications that take and parse command line options. Based on the ideas from Perl Best Practices and the GNU style long options reference. It uses only Standard Modules to maintain portability.
+
+The newest version can always be found at:
+https://github.com/kimmel/basic-perl-template-for-cli/
+
+bpt_cli.pl - Is a basic cli perl application.
+
+bpt_cli_cf.pl - A basic cli perl app with config file support.
+
+
+1.1 Design Methodology
 
 The code was formatted with 'perltidy --perl-best-practices' to keep it readable and then run through various levels of perlcritic to see where possible problems are located. The --brutal option checks for everything but I like having the output broken down by theme. I use this script: < https://gist.github.com/1033008 > to save on typing.
 
@@ -19,7 +42,7 @@ Missing "EXIT STATUS" section in POD at line 42, column 1.  See pages 133,138 of
 Missing "CONFIGURATION" section in POD at line 42, column 1.  See pages 133,138 of PBP.  (Severity: 2)
 
 
-* Notes about PBP used:
+1.2 Perl Best Practices (PBP):
 
 I think many of the guidelines written by Damian Conway really foster good communication via the code. Here is a break down of the PBP guidelines followed and my synopsis of what they mean in brackets [].
 
@@ -38,27 +61,30 @@ I think many of the guidelines written by Damian Conway really foster good commu
 14.3  Meta-options [ application command line flags ]
 14.5  Command-Line Processing [ use Getopt::Long qw( GetOptions ); ]
 
-------------
-Downloading:
-------------
 
-The most recent version can be downloaded from https://github.com/kimmel/basic-perl-template-for-cli .
 
---------------
-Bug Reporting:
---------------
+2. Requirements
+---------------
+Perl version 5.9.x or later. There is a note in the code for potentially getting these scripts to run on older versions of the Perl 5.x series. In addition, any CPAN modules list at the top of the template selected need to be installed as well.
+
+
+
+3. Reporting bugs
+-----------------
 
 Please check the Issue queue < https://github.com/kimmel/basic-perl-template-for-cli/issues > and file a report if one is not already present.
 
-----------
-Licensing:
-----------
+
+
+4. Licensing
+------------
 
 This program is free software; you can redistribute it and/or modify it under the 3-clause BSD license. See LICENSE.txt file.
 
-----------------
-References used:
-----------------
+
+
+5. References used
+------------------
 
 GNU Table of Long Options - http://www.gnu.org/prep/standards/html_node/Option-Table.html
 
@@ -66,6 +92,8 @@ perltidy - http://perltidy.sourceforge.net/
 
 perlcritic command-line interface - http://search.cpan.org/dist/Perl-Critic/bin/perlcritic
 
-Perl Best Practices - http://www.amazon.com/Perl-Best-Practices-Damian-Conway/dp/0596001738/ref=sr_1_1?s=books&ie=UTF8&qid=1308463834&sr=1-1
+Perl Best Practices by Damian Conway
 
 Perl Bundled Modules - http://perldoc.perl.org/perlmodlib.html#Standard-Modules
+
+Mastering Perl by Brian D Foy - Chapter 18

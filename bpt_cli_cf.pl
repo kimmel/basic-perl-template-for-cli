@@ -9,35 +9,51 @@
 #   https://github.com/kimmel/basic-perl-template-for-cli
 #-----------------------------------------------------------------------------#
 
-#comment out 'use diagnostics;' to get Perl 5.005 compatability
 use 5.009_001;
 
-# standard pragmas
 use warnings;
 use strict;
 use diagnostics;
-
-# Core modules
 use English qw( -no_match_vars );
 use Getopt::Long qw( GetOptions );
 use Pod::Usage qw( pod2usage );
 
 # from CPAN
+use Config::General qw( ParseConfig );
+
+sub read_config_file {
+    my $file = shift;
+
+    if ( -r -s $file ) {
+        return ParseConfig($file);
+    }
+    else {
+        if ( !-r $file ) {
+            die "Error '$file' is not accessable.\n";
+        }
+        die "Error processing configuration file: $file\n$!\n";
+    }
+}
 
 #-----------------------------------------------------------------------------#
 # Allow bundled single-character switches
 Getopt::Long::Configure('bundling');
 
 my $app_version = '1.0';
+my $config_file = './test.config';
 
 my $cli_options = GetOptions(
-    'help|?' => sub { pod2usage( -verbose => 1 ) }
+    'config|c=s' => \$config_file,
+    'help|?'     => sub { pod2usage( -verbose => 1 ) }
     ,    #print USAGE, ARGUMENTS, OPTIONS
     'man'   => sub { pod2usage( -verbose => 2 ) },    #prints everything
     'usage' => sub { pod2usage( -verbose => 0 ) },    #print USAGE
     'version' => sub { print "version: $app_version\n" },
 
 ) or die "Incorrect usage.\n";
+
+my %settings = read_config_file($config_file);
+
 
 1;
 
@@ -56,6 +72,7 @@ C<cmd_line_example> - Does something really awesome.
 =head1 USAGE
 
   cmd_line_example [ options ]
+  cmd_line_example [ -c | --config ]
   cmd_line_example { --help | --man | --usage | --version }
 
 =head1 REQUIRED ARGUMENTS
@@ -66,6 +83,9 @@ C<cmd_line_example> - Does something really awesome.
   These are the application options.
 
 =over
+
+=item C<-c | --config>
+  Specify the configuration file to use.
 
 =item C<--help>
 
