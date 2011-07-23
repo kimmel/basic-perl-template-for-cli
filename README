@@ -26,20 +26,14 @@ bpt_cli.pl - Is a basic cli perl application.
 
 bpt_cli_cf.pl - A basic cli perl app with config file support.
 
+modulino.pl - Is the same as bpt_cli.pl but in a module instead of script form. This allows the program to use module development and testing tools.
+
 
 1.1 Design Methodology
 
-The code was formatted with 'perltidy --perl-best-practices' to keep it readable and then run through various levels of perlcritic to see where possible problems are located. The --brutal option checks for everything but I like having the output broken down by theme. I use this script: < https://gist.github.com/1033008 > to save on typing.
+The code was formatted with 'perltidy --perl-best-practices' to keep it readable and then run through various levels of perlcritic to see where possible problems are located. The --brutal option checks for everything but I like having the output broken down by theme. I use this script: < https://github.com/kimmel/perltest.pl > to save on typing.
 
-I fixed as many of the listed problems as I thought necessary and the perlcritic output for --brutal now reads:
-
-RCS keywords $Id$ not found at line 1, column 1.  See page 441 of PBP.  (Severity: 2)
-RCS keywords $Revision$, $HeadURL$, $Date$ not found at line 1, column 1.  See page 441 of PBP.  (Severity: 2)
-RCS keywords $Revision$, $Source$, $Date$ not found at line 1, column 1.  See page 441 of PBP.  (Severity: 2)
-No package-scoped "$VERSION" variable found at line 1, column 1.  See page 404 of PBP.  (Severity: 2)
-Return value of flagged function ignored - print at line 32, column 24.  See pages 208,278 of PBP.  (Severity: 1)
-Missing "EXIT STATUS" section in POD at line 42, column 1.  See pages 133,138 of PBP.  (Severity: 2)
-Missing "CONFIGURATION" section in POD at line 42, column 1.  See pages 133,138 of PBP.  (Severity: 2)
+I fixed as many of the listed problems as I thought necessary and the perlcritic output has been saved to perlcritic_review.txt
 
 
 1.2 Perl Best Practices (PBP):
@@ -88,12 +82,17 @@ This program is free software; you can redistribute it and/or modify it under th
 
 GNU Table of Long Options - http://www.gnu.org/prep/standards/html_node/Option-Table.html
 
-perltidy - http://perltidy.sourceforge.net/
+perltidy command-line interface -
+  perldoc perltidy / http://perltidy.sourceforge.net/
 
-perlcritic command-line interface - http://search.cpan.org/dist/Perl-Critic/bin/perlcritic
+perlcritic command-line interface - 
+  perldoc perlcritic / http://search.cpan.org/dist/Perl-Critic/bin/perlcritic
 
 Perl Best Practices by Damian Conway
 
 Perl Bundled Modules - http://perldoc.perl.org/perlmodlib.html#Standard-Modules
 
 Mastering Perl by Brian D Foy - Chapter 18
+
+Pod::Usage
+  perldoc Pod::Usage / http://perldoc.perl.org/Pod/Usage.html#DESCRIPTION

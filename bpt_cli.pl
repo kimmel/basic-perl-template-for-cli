@@ -35,8 +35,7 @@ my $cli_options = GetOptions(
     ,    #print USAGE, ARGUMENTS, OPTIONS
     'man'   => sub { pod2usage( -verbose => 2 ) },    #prints everything
     'usage' => sub { pod2usage( -verbose => 0 ) },    #print USAGE
-    'version' => sub { print "version: $app_version\n" },
-
+    'version' => sub { print "version: $app_version\n"; exit 1; },
 ) or die "Incorrect usage.\n";
 
 1;
@@ -90,10 +89,19 @@ C<cmd_line_example> - Does something really awesome.
   This application can do < x, y, and z >.
 
 =head1 DIAGNOSTICS
+
+=head1 EXIT STATUS
+
+  0 - Sucessful program execution.
+  1 - Program exited normally. --help, --man, and --version return 1.
+  2 - Program exited normally. --usage returns 2.
+
 =head1 CONFIGURATION
 =head1 DEPENDENCIES
 =head1 INCOMPATIBILITIES
 =head1 BUGS AND LIMITATIONS
+
+=head1 HOMEPAGE
 
 =head1 AUTHOR
 

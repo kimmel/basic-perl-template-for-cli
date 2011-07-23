@@ -10,7 +10,6 @@
 #-----------------------------------------------------------------------------#
 
 use 5.009_001;
-
 use warnings;
 use strict;
 use diagnostics;
@@ -18,39 +17,27 @@ use English qw( -no_match_vars );
 use Getopt::Long qw( GetOptions );
 use Pod::Usage qw( pod2usage );
 
-# from CPAN
-use Config::General qw( ParseConfig );
-
-sub read_config_file {
-    my $file = shift;
-
-    if ( -r -s $file ) {
-        return ParseConfig($file);
-    }
-    else {
-        if ( !-r $file ) {
-            die "Error '$file' is not accessable.\n";
-        }
-        die "Error processing configuration file: $file\n$ERRNO\n";
-    }
-}
+package main;
 
 #-----------------------------------------------------------------------------#
 # Allow bundled single-character switches
 Getopt::Long::Configure('bundling');
 
 my $app_version = '1.0';
-my $config_file = './test.config';
 
-my $cli_options = GetOptions(
-    'config|c=s' => \$config_file,
-    'help|?'     => sub { pod2usage( -verbose => 1 ) },
-    'man'        => sub { pod2usage( -verbose => 2 ) },
-    'usage'      => sub { pod2usage( -verbose => 0 ) },
-    'version'    => sub { print "version: $app_version\n"; exit 1; },
-) or die "Incorrect usage.\n";
+sub run {
 
-my %settings = read_config_file($config_file);
+    my $cli_options = GetOptions(
+        'help|?' => sub { pod2usage( -verbose => 1 ) },
+        'man'    => sub { pod2usage( -verbose => 2 ) },
+        'usage'  => sub { pod2usage( -verbose => 0 ) },
+        'version' => sub { print "version: $app_version\n"; exit 1; },
+    ) or die "Incorrect usage.\n";
+
+    return;
+}
+
+run() unless caller;
 
 1;
 
@@ -69,7 +56,6 @@ C<cmd_line_example> - Does something really awesome.
 =head1 USAGE
 
   cmd_line_example [ options ]
-  cmd_line_example [ -c | --config ]
   cmd_line_example { --help | --man | --usage | --version }
 
 =head1 REQUIRED ARGUMENTS
@@ -80,9 +66,6 @@ C<cmd_line_example> - Does something really awesome.
   These are the application options.
 
 =over
-
-=item C<-c | --config>
-  Specify the configuration file to use.
 
 =item C<--help>
 
