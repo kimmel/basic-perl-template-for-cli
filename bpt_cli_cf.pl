@@ -110,7 +110,7 @@ C<cmd_line_example> - Does something really awesome.
   This application can do < x, y, and z >.
 
 =head1 DIAGNOSTICS
-=head1 CONFIGURATION AND ENVIRONMENT
+=head1 CONFIGURATION
 =head1 DEPENDENCIES
 =head1 INCOMPATIBILITIES
 =head1 BUGS AND LIMITATIONS
