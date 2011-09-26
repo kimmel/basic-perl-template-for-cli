@@ -15,7 +15,6 @@ use 5.009_001;
 # standard pragmas
 use warnings;
 use strict;
-use diagnostics;
 
 # Core modules
 use English qw( -no_match_vars );
@@ -58,6 +57,7 @@ C<cmd_line_example> - Does something really awesome.
   cmd_line_example { --help | --man | --usage | --version }
 
 =head1 REQUIRED ARGUMENTS
+
 =head1 ARGUMENTS
 
 =head1 OPTIONS
@@ -97,21 +97,26 @@ C<cmd_line_example> - Does something really awesome.
   2 - Program exited normally. --usage returns 2.
 
 =head1 CONFIGURATION
+
 =head1 DEPENDENCIES
+
 =head1 INCOMPATIBILITIES
+
 =head1 BUGS AND LIMITATIONS
 
 =head1 HOMEPAGE
 
 =head1 AUTHOR
 
-  Name < email address >
+Name < email address >
 
 =head1 LICENSE AND COPYRIGHT
 
-  Copyright (c) 2011 < name here >. All rights reserved.
+Copyright (c) 2011 < name here >. All rights reserved.
 
-  This program is free software; you can redistribute it and/or modify it under the 3-clause BSD license. The full text of this license can be found online at < http://opensource.org/licenses/BSD-3-Clause >
+This program is free software; you can redistribute it and/or modify it under
+the 3-clause BSD license. The full text of this license can be found online at
+< http://opensource.org/licenses/BSD-3-Clause >
 
 =cut
 
