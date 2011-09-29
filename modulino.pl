@@ -18,17 +18,17 @@ use Pod::Usage qw( pod2usage );
 
 package main;
 
+our $VERSION = 1.0;
+
 #-----------------------------------------------------------------------------
 
 sub main {
-    my $app_version = '1.0';
-
     Getopt::Long::Configure('bundling');
     my $cli_options = GetOptions(
         'help|?' => sub { pod2usage( -verbose => 1 ) },
         'man'    => sub { pod2usage( -verbose => 2 ) },
         'usage'  => sub { pod2usage( -verbose => 0 ) },
-        'version' => sub { print "version: $app_version\n"; exit 1; },
+        'version' => sub { print "version: $VERSION\n"; exit 1; },
     ) or die "Incorrect usage.\n";
 
     return;
