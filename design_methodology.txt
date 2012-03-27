@@ -1,0 +1,58 @@
+Design Methodology
+==================
+
+Code Formatting:
+----------------
+
+perltidy -pbp
+
+
+Code Design:
+------------
+
+One of the basic ideas was to use perlcritic and existing policies to help
+make the code uniform. Below are a list of the themes and modes used.
+
+swift - Perl::Critic::Swift
+security
+complexity
+portability
+unicode
+bangs - Perl::Critic::Bangs
+performance
+tests
+--harsh
+pbp
+--brutal
+
+Instead of spending an undue amount of time explaining why all of the above 
+are worthwhile I am just going to list the policy warnings I do not adhere to:
+
+pbp:
+  RCS keywords $Id$ not found
+  RCS keywords $Revision$, $HeadURL$, $Date$ not found
+  RCS keywords $Revision$, $Source$, $Date$
+  Postfix control "unless" used
+    * Sometimes an unless statement is more readable.
+    main() if (! caller); # is not that clear
+    main() unless caller; # nice and clean
+
+
+Core Modules:
+-------------
+
+Exploit everything you can that comes with a Perl distro. corelist is an
+excellent command line tool for checking if a module is in core.
+
+
+
+References used:
+----------------
+
+perltidy command-line interface -
+  perldoc perltidy / http://perltidy.sourceforge.net/
+
+perlcritic command-line interface - 
+  perldoc perlcritic / http://search.cpan.org/dist/Perl-Critic/bin/perlcritic
+
+Perl Best Practices by Damian Conway
