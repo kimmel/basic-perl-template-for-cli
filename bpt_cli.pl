@@ -1,41 +1,34 @@
 #!/usr/bin/perl
 
-#-----------------------------------------------------------------------------#
-# Copyright (c) 2011 Kirk Kimmel. All rights reserved.
+# Copyright (c) 2011-2012 Kirk Kimmel. All rights reserved.
 # This program is free software; you can redistribute it and/or modify it
 # under the 3-clause BSD license. See LICENSE.txt.
 #
 # The newest version of this file can be found at:
 #   https://github.com/kimmel/basic-perl-template-for-cli
-#-----------------------------------------------------------------------------#
 
-#comment out 'use diagnostics;' to get Perl 5.005 compatability
-use 5.009_001;
-
-# standard pragmas
+use utf8;
 use warnings;
 use strict;
-
-# Core modules
 use English qw( -no_match_vars );
-use Getopt::Long qw( GetOptions );
+use Getopt::Long;
 use Pod::Usage qw( pod2usage );
 
-# from CPAN
-
 #-----------------------------------------------------------------------------#
-# Allow bundled single-character switches
-Getopt::Long::Configure('bundling');
+our $VERSION = '1.0';
 
-my $app_version = '1.0';
+my $parser = Getopt::Long::Parser->new();
+$parser->configure( 'bundling', 'no_ignore_case', );
 
-my $cli_options = GetOptions(
+my $cli_options = {
     'help|?' => sub { pod2usage( -verbose => 1 ) }
     ,    #print USAGE, ARGUMENTS, OPTIONS
     'man'   => sub { pod2usage( -verbose => 2 ) },    #prints everything
     'usage' => sub { pod2usage( -verbose => 0 ) },    #print USAGE
-    'version' => sub { print "version: $app_version\n"; exit 1; },
-) or die "Incorrect usage.\n";
+    'version' => sub { print "version: $VERSION\n"; exit 1; },
+};
+
+$parser->getoptions( %{$cli_options} ) or pod2usage( -verbose => 0 );
 
 1;
 
@@ -45,6 +38,8 @@ __END__
 
 =pod
 
+=encoding utf8
+
 =head1 NAME
 
 C<cmd_line_example> - Does something really awesome.
@@ -53,8 +48,7 @@ C<cmd_line_example> - Does something really awesome.
 
 =head1 USAGE
 
-  cmd_line_example [ options ]
-  cmd_line_example { --help | --man | --usage | --version }
+cmd_line_example [ options ]
 
 =head1 REQUIRED ARGUMENTS
 
@@ -62,39 +56,39 @@ C<cmd_line_example> - Does something really awesome.
 
 =head1 OPTIONS
 
-  These are the application options.
+These are the application options.
 
 =over
 
-=item C<--help>
+=item B<-?, --help>
 
-  Displays a brief summary of options and exits.
+Displays a brief summary of options and exits.
 
-=item C<--man>
+=item B<--man>
 
-  Displays the complete manual and exits.
+Displays the complete manual and exits.
 
-=item C<--usage>
+=item B<--usage>
 
-  Displays the basic application usage.
+Displays the basic application usage.
 
-=item C<--version>
+=item B<--version>
 
-  Displays the version number and exits.
+Displays the version number and exits.
 
 =back
 
 =head1 DESCRIPTION
 
-  This application can do < x, y, and z >.
+This application can do < x, y, and z >.
 
 =head1 DIAGNOSTICS
 
 =head1 EXIT STATUS
 
-  0 - Sucessful program execution.
-  1 - Program exited normally. --help, --man, and --version return 1.
-  2 - Program exited normally. --usage returns 2.
+ 0 - Sucessful program execution.
+ 1 - Program exited normally. --help, --man, and --version return 1.
+ 2 - Program exited normally. --usage returns 2.
 
 =head1 CONFIGURATION
 
@@ -106,13 +100,15 @@ C<cmd_line_example> - Does something really awesome.
 
 =head1 HOMEPAGE
 
+http://
+
 =head1 AUTHOR
 
-Name < email address >
+Name < email_address >
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (c) 2011 < name here >. All rights reserved.
+Copyright (c) 2012 < name_here >. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it under
 the 3-clause BSD license. The full text of this license can be found online at

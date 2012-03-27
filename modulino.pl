@@ -1,19 +1,17 @@
 #!/usr/bin/perl
 
-#-----------------------------------------------------------------------------#
-# Copyright (c) 2011 Kirk Kimmel. All rights reserved.
+# Copyright (c) 2011-2012 Kirk Kimmel. All rights reserved.
 # This program is free software; you can redistribute it and/or modify it
 # under the 3-clause BSD license. See LICENSE.txt.
 #
 # The newest version of this file can be found at:
 #   https://github.com/kimmel/basic-perl-template-for-cli
-#-----------------------------------------------------------------------------#
 
-use 5.009_001;
+use utf8;
 use warnings;
 use strict;
 use English qw( -no_match_vars );
-use Getopt::Long qw( GetOptions );
+use Getopt::Long;
 use Pod::Usage qw( pod2usage );
 
 package main;
@@ -23,13 +21,17 @@ our $VERSION = 1.0;
 #-----------------------------------------------------------------------------
 
 sub main {
-    Getopt::Long::Configure('bundling');
-    my $cli_options = GetOptions(
+    my $parser = Getopt::Long::Parser->new();
+    $parser->configure( 'bundling', 'no_ignore_case', );
+
+    my $cli_options = {
         'help|?' => sub { pod2usage( -verbose => 1 ) },
         'man'    => sub { pod2usage( -verbose => 2 ) },
         'usage'  => sub { pod2usage( -verbose => 0 ) },
         'version' => sub { print "version: $VERSION\n"; exit 1; },
-    ) or die "Incorrect usage.\n";
+    };
+
+    $parser->getoptions( %{$cli_options} ) or die "Incorrect usage.\n";
 
     return;
 }
@@ -44,6 +46,8 @@ __END__
 
 =pod
 
+=encoding utf8
+
 =head1 NAME
 
 C<cmd_line_example> - Does something really awesome.
@@ -52,8 +56,7 @@ C<cmd_line_example> - Does something really awesome.
 
 =head1 USAGE
 
-  cmd_line_example [ options ]
-  cmd_line_example { --help | --man | --usage | --version }
+cmd_line_example [ options ]
 
 =head1 REQUIRED ARGUMENTS
 
@@ -61,39 +64,39 @@ C<cmd_line_example> - Does something really awesome.
 
 =head1 OPTIONS
 
-  These are the application options.
+These are the application options.
 
 =over
 
-=item C<--help>
+=item B<-?, --help>
 
-  Displays a brief summary of options and exits.
+Displays a brief summary of options and exits.
 
-=item C<--man>
+=item B<--man>
 
-  Displays the complete manual and exits.
+Displays the complete manual and exits.
 
-=item C<--usage>
+=item B<--usage>
 
-  Displays the basic application usage.
+Displays the basic application usage.
 
-=item C<--version>
+=item B<--version>
 
-  Displays the version number and exits.
+Displays the version number and exits.
 
 =back
 
 =head1 DESCRIPTION
 
-  This application can do < x, y, and z >.
+This application can do < x, y, and z >.
 
 =head1 DIAGNOSTICS
 
 =head1 EXIT STATUS
 
-  0 - Sucessful program execution.
-  1 - Program exited normally. --help, --man, and --version return 1.
-  2 - Program exited normally. --usage returns 2.
+ 0 - Sucessful program execution.
+ 1 - Program exited normally. --help, --man, and --version return 1.
+ 2 - Program exited normally. --usage returns 2.
 
 =head1 CONFIGURATION
 
@@ -105,13 +108,15 @@ C<cmd_line_example> - Does something really awesome.
 
 =head1 HOMEPAGE
 
+http://
+
 =head1 AUTHOR
 
-Name < email address >
+Name < email_address >
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (c) 2011 < name here >. All rights reserved.
+Copyright (c) 2012 < name_here >. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it under
 the 3-clause BSD license. The full text of this license can be found online at

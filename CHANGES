@@ -1,0 +1,7 @@
+1.x
+===
+* Removed comment cruft.
+* utf8 encoding
+* Used a dispatch table for getoptions()
+* POD formatting for visual clarity
+* Updated the README and created a design doc.

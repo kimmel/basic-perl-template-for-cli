@@ -5,8 +5,6 @@ Table of contents
 -----------------
 
 1. Introduction
-1.1. Design Methodology
-1.2. PBP
 2. Requirements
 3. Reporting bugs
 4. Licensing
@@ -17,56 +15,31 @@ Table of contents
 1. Introduction 
 ---------------
 
-A basic template for Perl applications that take and parse command line options. Based on the ideas from Perl Best Practices and the GNU style long options reference. It uses only Standard Modules to maintain portability.
+A set of basic templates for Perl applications that take and parse command
+line options. Based on the ideas from Perl Best Practices, the GNU style long
+options reference and other Perl::Critic policies.
 
 The newest version can always be found at:
 https://github.com/kimmel/basic-perl-template-for-cli/
 
-bpt_cli.pl - Is a basic cli perl application.
+bpt_cli.pl - Is a basic cli app for Perl prior to v5.10
 
 bpt_cli_cf.pl - A basic cli perl app with config file support.
 
 modulino.pl - Is the same as bpt_cli.pl but in a module instead of script form. This allows the program to use module development and testing tools.
 
 
-1.1 Design Methodology
-
-The code was formatted with 'perltidy --perl-best-practices' to keep it readable and then run through various levels of perlcritic to see where possible problems are located. The --brutal option checks for everything but I like having the output broken down by theme. I use this script: < https://github.com/kimmel/perltest.pl > to save on typing.
-
-I fixed as many of the listed problems as I thought necessary and the perlcritic output has been saved to perlcritic_review.txt
-
-
-1.2 Perl Best Practices (PBP):
-
-I think many of the guidelines written by Damian Conway really foster good communication via the code. Here is a break down of the PBP guidelines followed and my synopsis of what they mean in brackets [].
-
- 2.*  Code Layout [ perltidy --perl-best-practices ]
-
- 4.13 Barewords [ use strict; ]
- 
- 5.5  Punctuation Variables [ use English; ]
- 5.7  Match Variables [ use English qw( -no_match_vars ); ]
- 
- 7.2  Boilerplates [ documentation template for applications ]
- 7.4  Location [ the user docs are in the source file ]
- 7.5  Contiguity [ put all POD in one location in the source file ]
- 7.6  Position [ put all POD at the end of the file ]
- 
-14.3  Meta-options [ application command line flags ]
-14.5  Command-Line Processing [ use Getopt::Long qw( GetOptions ); ]
-
-
 
 2. Requirements
 ---------------
-Perl version 5.9.x or later. There is a note in the code for potentially getting these scripts to run on older versions of the Perl 5.x series. In addition, any CPAN modules list at the top of the template selected need to be installed as well.
+Any CPAN modules list at the top of the template selected need to be installed.
 
 
 
 3. Reporting bugs
 -----------------
 
-Please check the Issue queue < https://github.com/kimmel/basic-perl-template-for-cli/issues > and file a report if one is not already present.
+Please check the Issue queue < https://github.com/kimmel/basic-perl-template-for-cli/issues > and file an issue if one is not already present.
 
 
 
@@ -81,16 +54,6 @@ This program is free software; you can redistribute it and/or modify it under th
 ------------------
 
 GNU Table of Long Options - http://www.gnu.org/prep/standards/html_node/Option-Table.html
-
-perltidy command-line interface -
-  perldoc perltidy / http://perltidy.sourceforge.net/
-
-perlcritic command-line interface - 
-  perldoc perlcritic / http://search.cpan.org/dist/Perl-Critic/bin/perlcritic
-
-Perl Best Practices by Damian Conway
-
-Perl Bundled Modules - http://perldoc.perl.org/perlmodlib.html#Standard-Modules
 
 Mastering Perl by Brian D Foy - Chapter 18
 
